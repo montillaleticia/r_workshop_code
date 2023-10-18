@@ -1,0 +1,56 @@
+---
+title: "README"
+author: "LeticiaMontilla"
+date: "2023-10-18"
+output: html_document
+---
+# Air Quality Analysis
+
+This R script analyzes air quality data, calculates average solar radiation for each month, and explores the correlation between ozone and solar radiation.
+
+## Installation
+
+Make sure you have the following R packages installed:
+
+- ggplot2
+
+You can install them using `install.packages("ggplot2")`.
+
+## Usage
+
+1. Run the script in R.
+
+2. The script will clean the data, calculate averages, correlations, generate plots, and save the results.
+
+## Functions
+
+### `clean_data(data)`
+
+Cleans the input data by removing rows with missing values.
+
+### `calculate_avg_solar(data, month)`
+
+Calculates the average solar radiation for a specific month.
+
+- `data`: The input data frame.
+- `month`: The month for which to calculate the average.
+
+### `calculate_correlation(data, month)`
+
+Calculates the correlation between ozone and solar radiation for a specific month.
+
+- `data`: The input data frame.
+- `month`: The month for which to calculate the correlation.
+
+### `generate_and_save_plot(data, month, title, filename)`
+
+Generates a scatter plot of ozone vs. solar radiation and saves it to a file.
+
+- `data`: The input data frame.
+- `month`: The month for which to generate the plot.
+- `title`: The title of the plot.
+- `filename`: The name of the output file.
+
+## License
+
+This project is licensed under the MIT License.
