@@ -4,7 +4,16 @@ library(ggplot2)
 # Fetching data
 data <- airquality
 
-# Data Cleaning - Remove rows with NA
+# Clean Data
+# 
+# This function removes rows with missing values from the input data frame.
+# 
+# Args:
+#   data: The input data frame to be cleaned.
+# 
+# Returns:
+#   A cleaned data frame with missing values removed.
+
 clean_data <- function(data) {
   data[complete.cases(data), ]
 }
@@ -12,18 +21,43 @@ clean_data <- function(data) {
 data <- clean_data(data)
 
 # Function to calculate the average Solar Radiation for a given month
+# 
+# Args:
+#   data: The input data frame.
+#   month: The month for which to calculate the average.
+# 
+# Returns:
+#   The average solar radiation for the specified month.
 calculate_avg_solar <- function(data, month) {
   avg_solar <- mean(data$Solar.R[data$Month == month])
   return(avg_solar)
 }
 
-# Function to calculate the correlation between Ozone and Solar Radiation for a given month
+# Calculate Correlation
+# 
+# This function calculates the correlation between ozone and solar radiation for a specific month.
+# 
+# Args:
+#   data: The input data frame.
+#   month: The month for which to calculate the correlation (e.g., 5 for May).
+# 
+# Returns:
+#   The correlation coefficient between ozone and solar radiation for the specified month.
 calculate_correlation <- function(data, month) {
   correlation <- cor(data$Ozone[data$Month == month], data$Solar.R[data$Month == month])
   return(correlation)
 }
 
-# Function to generate and save a plot
+# Generate and Save Plot
+# 
+# This function generates a scatter plot of ozone vs. solar radiation for a specific month
+# and saves it to a file.
+# 
+# Args:
+#   data: The input data frame.
+#   month: The month for which to generate the plot (e.g., 5 for May).
+#   title: The title of the plot.
+#   filename: The name of the output file.
 generate_and_save_plot <- function(data, month, title, filename) {
   plot <- ggplot(data[data$Month == month, ], aes(x = Solar.R, y = Ozone)) +
     geom_point(aes(shape = factor(Month))) +
